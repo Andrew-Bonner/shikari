@@ -13,6 +13,7 @@ def ask_gemini(message_content):
         model='gemini-2.5-flash',
         contents=message_content
     )
+    
     return response.text
 
 
@@ -24,12 +25,7 @@ def get_domain_data(domain,api_key):
     return repsonse.text
 
 def get_email_data(email):
-    params={
-        'email': email,
-        'api_key': HUNTER_IO_API_KEY
-    }
-    
-    repsonse = requests.get(hunterio_url,params=params)
+    repsonse = requests.get(f'{hunterio_url}?email={email}&api_key={HUNTER_IO_API_KEY}')
     return repsonse.json
 
 
